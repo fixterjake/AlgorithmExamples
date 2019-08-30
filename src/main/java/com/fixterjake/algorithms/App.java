@@ -34,6 +34,13 @@ public class App {
                                    + executionTimes.get(i) + " milliseconds, "
                                    + executionTimes.get(i) / 1000.0 + " seconds");
             }
+            long sum = 0;
+            for (int i = 0; i < executionTimes.size(); i++) {
+                sum += executionTimes.get(i);
+            }
+            pout.println("|| Total execution time: "
+                          + sum + " milliseconds, "
+                          + sum / 1000.0 + " seconds");
             pout.println("|| ****************************** ||");
             pout.close();
         }
@@ -103,6 +110,18 @@ public class App {
         System.out.println("|| " + string);
     }
 
+    protected static void writeSortedList() {
+        try {
+            PrintWriter pout = new PrintWriter(new File(numsPath));
+            for (int i : list) {
+                pout.println(i);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         init();
@@ -111,7 +130,8 @@ public class App {
         printSpacer();
         print("1 : Bubble sort");
         print("2 : Insertion sort");
-        print("3 : All");
+        print("3 : Shell sort");
+        print("4 : All");
         print("0 : Exit");
         printSpacer();
         int choice = 0;
@@ -124,6 +144,7 @@ public class App {
             printSpacer();
             System.exit(1);
         }
+        printSpacer();
         switch (choice) {
             case 1:     BubbleSort.process();
                         break;
@@ -131,11 +152,16 @@ public class App {
             case 2:     InsertionSort.process();
                         break;
 
-            case 3:     BubbleSort.process();
+            case 3:     ShellSort.process();
+                        break;
+
+            case 4:     BubbleSort.process();
                         InsertionSort.process();
+                        ShellSort.process();
                         break;
             default:
         }
+        writeSortedList();
         printSpacer();
         print("Now exiting");
         printSpacer();

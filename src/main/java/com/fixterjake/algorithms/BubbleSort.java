@@ -22,7 +22,6 @@ public class BubbleSort {
 
     public static void process() {
         long bubble = App.processTime(BubbleSort.bubbleSort(App.list));
-        App.printSpacer();
         App.print("Bubble Sort execution time (milliseconds): " + bubble);
         App.executionTimes.add(bubble);
         App.algorithmTypes.add("Bubble Sort");
