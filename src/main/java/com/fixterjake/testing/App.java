@@ -14,7 +14,7 @@ public class App {
     /** File holding result of sorting **/
     private static final String resultsPath = "results.txt";
     /** Number of integers to generate **/
-    private static final int fileSize = 100000;
+    private static final int fileSize = 10000;
     /** List to populate and sort using given algorithms **/
     private static ArrayList<Integer> list = new ArrayList<Integer>();;
     /** List of execution times **/
@@ -33,7 +33,7 @@ public class App {
             for (int i = 0; i < executionTimes.size(); i++) {
                 pout.println("|| " + algorithmTypes.get(i) + ": "
                                    + executionTimes.get(i) + " milliseconds, "
-                                   + TimeUnit.MILLISECONDS.toSeconds(executionTimes.get(i)) + " seconds");
+                                   + executionTimes.get(i) / 1000.0 + " seconds");
             }
             pout.println("|| ****************************** ||");
             pout.close();
@@ -105,14 +105,8 @@ public class App {
     }
 
     public static void main(String[] args) {
-        App app = new App();
         Scanner sc = new Scanner(System.in);
-        printSpacer();
-        print("Is this the first run? (Y/N)");
-        if (sc.next().equalsIgnoreCase("Y")) {
-            app.init();
-            print("File populated.");
-        }
+        init();
         printSpacer();
         print("Available algorithms, please enter the corresponding number: ");
         printSpacer();
@@ -137,6 +131,9 @@ public class App {
                         printSpacer();
                         executionTimes.add(time);
                         algorithmTypes.add("Bubble Sort");
+                        break;
+
+            case 2:     print("This is a test!");
                         break;
 
             default:    printSpacer();
