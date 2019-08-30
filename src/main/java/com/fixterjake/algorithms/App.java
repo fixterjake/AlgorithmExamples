@@ -1,11 +1,10 @@
-package com.fixterjake.testing;
+package com.fixterjake.algorithms;
 
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class App {
 
@@ -14,13 +13,13 @@ public class App {
     /** File holding result of sorting **/
     private static final String resultsPath = "results.txt";
     /** Number of integers to generate **/
-    private static final int fileSize = 10000;
+    private static final int fileSize = 40000;
     /** List to populate and sort using given algorithms **/
-    private static ArrayList<Integer> list = new ArrayList<Integer>();;
+    protected static ArrayList<Integer> list = new ArrayList<Integer>();;
     /** List of execution times **/
-    private static ArrayList<Long> executionTimes = new ArrayList<Long>();
+    protected static ArrayList<Long> executionTimes = new ArrayList<Long>();
     /** List of algorithm types tested **/
-    private static ArrayList<String> algorithmTypes = new ArrayList<String>();
+    protected static ArrayList<String> algorithmTypes = new ArrayList<String>();
 
     /**
      * Write execution times to result file
@@ -85,7 +84,7 @@ public class App {
      * @param time Execution time in nanoseconds
      * @return Execution time in milliseconds
      */
-    private static long processTime(long time) {
+    protected static long processTime(long time) {
         return time / 1000000;
     }
 
@@ -111,6 +110,8 @@ public class App {
         print("Available algorithms, please enter the corresponding number: ");
         printSpacer();
         print("1 : Bubble sort");
+        print("2 : Insertion sort");
+        print("3 : All");
         print("0 : Exit");
         printSpacer();
         int choice = 0;
@@ -124,22 +125,20 @@ public class App {
             System.exit(1);
         }
         switch (choice) {
-            case 1:     long time = processTime(BubbleSort.bubbleSort(list));
-                        printSpacer();
-                        print("Execution time (milliseconds): " + time);
-                        print("Now exiting");
-                        printSpacer();
-                        executionTimes.add(time);
-                        algorithmTypes.add("Bubble Sort");
+            case 1:     BubbleSort.process();
                         break;
 
-            case 2:     print("This is a test!");
+            case 2:     InsertionSort.process();
                         break;
 
-            default:    printSpacer();
-                        print("Exiting.");
-                        printSpacer();
+            case 3:     BubbleSort.process();
+                        InsertionSort.process();
+                        break;
+            default:
         }
+        printSpacer();
+        print("Now exiting");
+        printSpacer();
         writeResult();
         System.exit(0);
     }

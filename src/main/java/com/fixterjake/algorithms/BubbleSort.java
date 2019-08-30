@@ -1,6 +1,5 @@
-package com.fixterjake.testing;
+package com.fixterjake.algorithms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BubbleSort {
@@ -19,5 +18,13 @@ public class BubbleSort {
         }
         long endTime = System.nanoTime();
         return endTime - startTime;
+    }
+
+    public static void process() {
+        long bubble = App.processTime(BubbleSort.bubbleSort(App.list));
+        App.printSpacer();
+        App.print("Bubble Sort execution time (milliseconds): " + bubble);
+        App.executionTimes.add(bubble);
+        App.algorithmTypes.add("Bubble Sort");
     }
 }
