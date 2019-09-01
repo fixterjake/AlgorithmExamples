@@ -21,9 +21,5 @@ public class ShellSort {
     }
 
     public static void process() {
-        long shell = App.processTime(ShellSort.shellSort(App.list));
-        App.print("Shell Sort execution time (milliseconds): " + shell);
-        App.executionTimes.add(shell);
-        App.algorithmTypes.add("Shell Sort");
     }
 }

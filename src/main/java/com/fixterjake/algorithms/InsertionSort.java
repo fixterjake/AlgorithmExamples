@@ -20,9 +20,5 @@ public class InsertionSort {
     }
 
     public static void process() {
-        long insertion = App.processTime(InsertionSort.insertionSort(App.list));
-        App.print("Insertion Sort execution time (milliseconds): " + insertion);
-        App.executionTimes.add(insertion);
-        App.algorithmTypes.add("Insertion Sort");
     }
 }
